@@ -3,7 +3,7 @@
 <!-- arXiv badge: fill in the identifier once the preprint is live
 [![arXiv](https://img.shields.io/badge/arXiv-XXXX.XXXXX-b31b1b.svg)](https://arxiv.org/abs/XXXX.XXXXX)
 -->
-[![Project Page](https://img.shields.io/badge/Project-Page-blue.svg)](https://ajmeek.github.io/mitigating_reward_hacking_project_page/)
+[![Project Page](https://img.shields.io/badge/Project-Page-blue.svg)](https://ajmeek.github.io/mitigating_reward_hacking_website/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
@@ -13,7 +13,7 @@ This is the repository for our work on mitigating reward hacking in realistic sc
 ### Links
 
 - **Paper**: arXiv link coming soon
-- **Project Page**: [Website](https://ajmeek.github.io/mitigating_reward_hacking_project_page/)
+- **Project Page**: [Website](https://ajmeek.github.io/mitigating_reward_hacking_website/)
 
 ### Abstract
 
@@ -26,8 +26,8 @@ This is the repository for our work on mitigating reward hacking in realistic sc
 
 ```bash
 # Clone the repository and the pinned ImpossibleBench checkout it evaluates on
-git clone https://github.com/ajmeek/mitigating_reward_hacking_in_realistic_scenarios.git
-cd mitigating_reward_hacking_in_realistic_scenarios
+git clone https://github.com/ajmeek/mitigating_reward_hacking.git
+cd mitigating_reward_hacking
 git clone https://github.com/safety-research/impossiblebench.git external/impossiblebench
 git -C external/impossiblebench checkout 061dc3dce6a96ab6cf02a855157263033dcfa3ba
 
@@ -327,7 +327,7 @@ uv run --with torch --with statsmodels --with scikit-learn python experiments/pr
 ## Repository Structure
 
 ```
-mitigating_reward_hacking_in_realistic_scenarios/
+mitigating_reward_hacking/
 ├── paper-artifacts/                  # One folder per figure/table: script + PDF + PNG, and the driver
 │   ├── make_paper_artifacts.py       #   regenerates all of them and checks them against the paper
 │   └── paper_style.py                #   shared figure style
