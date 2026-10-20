@@ -1,3 +1,23 @@
+# Claude specific stuff
+.claude/
+tmp/
+
+# Keys and certificates — never commit
+*.pem
+*.key
+*.p12
+id_rsa
+id_ed25519
+
+
+# Eval logs
+logs/
+
+# Experiment raw data (activation dumps etc.) — meta/findings/scripts/artifacts stay tracked
+experiments/*/data/
+experiments/archive/*/data/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -47,7 +67,6 @@ nosetests.xml
 coverage.xml
 *.cover
 *.py.cover
-*.lcov
 .hypothesis/
 .pytest_cache/
 cover/
@@ -95,7 +114,7 @@ ipython_config.py
 #   install all needed dependencies.
 # Pipfile.lock
 
-# uv
+# UV
 #   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
 #   commonly ignored for libraries.
@@ -123,14 +142,13 @@ ipython_config.py
 # pixi.lock
 #   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one
 #   in the .venv directory. It is recommended not to include this directory in version control.
-.pixi/*
-!.pixi/config.toml
+.pixi
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
 
 # Celery stuff
-celerybeat-schedule*
+celerybeat-schedule
 celerybeat.pid
 
 # Redis
@@ -166,7 +184,7 @@ venv.bak/
 # Rope project settings
 .ropeproject
 
-# mkdocs/Zensical documentation
+# mkdocs documentation
 /site
 
 # mypy
@@ -197,10 +215,10 @@ cython_debug/
 .abstra/
 
 # Visual Studio Code
-#   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore that
-#   can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#   and can be added to the global gitignore or merged into this file. However, if you prefer, you
-#   could uncomment the following to ignore the entire vscode folder
+#   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
+#   that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
+#   and can be added to the global gitignore or merged into this file. However, if you prefer, 
+#   you could uncomment the following to ignore the entire vscode folder
 # .vscode/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
@@ -218,3 +236,55 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Agent scratch space
+.agent-sandbox/
+experiments/prefill-intervention/artifacts/prefills.json
+
+# macOS
+.DS_Store
+
+# transcript lens build outputs (rebuild with tools/transcript_lens/build.py)
+tools/transcript_lens/out/
+
+# Overleaf project (separate git repo, cloned into paper/)
+paper/
+
+# SAE checkpoints (Qwen-Scope), pulled by hand; ~3.3 GB per layer
+data/saes/
+
+# bf16 activation dumps pulled from S3 (see canonical/INDEX.md)
+data/captures/
+
+# local caches of pulled S3 data (data/cache/<set>/) and scratch outputs of live monitors,
+# provisioning stages and smoke tests (data/scratch/); formerly under .agent-sandbox/
+data/cache/
+data/scratch/
+
+# intervention-magnitude: streamed covariance/whitening intermediates (225 MB + 1.9 GB);
+# regenerate with its scripts/capture_stats.py, whiten_pass.py (~7 min, CPU)
+experiments/intervention-magnitude/artifacts/*.npz
+
+# edit-judge labels (hack-action-anchor): 88 KB result of record that the approach-axis and pre-hack figures read
+!experiments/hack-action-anchor/data/
+experiments/hack-action-anchor/data/*
+!experiments/hack-action-anchor/data/edit_judgments.json
+
+# paper-artifacts driver output (make_paper_artifacts.py)
+paper-artifacts/out/
+
+# honest-submission judge labels: the results of record the honest-submit figures and tables read
+!experiments/honest-submission-judge/data/
+experiments/honest-submission-judge/data/*
+!experiments/honest-submission-judge/data/labels.jsonl
+!experiments/honest-submission-judge/data/labels_spec.jsonl
+
+# tracked inputs of record that the rules above would otherwise ignore
+!experiments/opt-vector/data/
+experiments/opt-vector/data/*
+!experiments/opt-vector/data/rh_src_train_1k_v3b.jsonl
+!experiments/opt-vector/data/rh_src_train_1k_v3c.jsonl
+!experiments/intervention-magnitude/artifacts/kappa_opt_L35.npz
+# data/: only this README ships
+data/*
+!data/README.md

@@ -1,0 +1,15 @@
+# Dose-response arms on the canonical vector u (read by scripts/run_arms.sh and by the fleet runner via fleet.toml).
+# name   mode   dose   port   artifact ('-' = canonical u, src/steering_reasoning/canonical/u_L35_steering.safetensors)
+# clamp: cap the projection h.u at the dose on every written token (c0 = cap at 0, cn8 = cap at -8; lower = stronger).
+# add:   h <- h + dose * u on every written token (negative = away from hacking).
+# Ports are the per-arm steering proxies that scripts/run_arms.sh starts (the fleet runner picks its own); they only need to be unique.
+base     none   -      8110   -
+c0       clamp  0      8111   -
+cn4      clamp  -4     8112   -
+cn8      clamp  -8     8113   -
+cn12     clamp  -12    8114   -
+cn16     clamp  -16    8115   -
+addn2    add    -2     8118   -
+addn4    add    -4     8116   -
+addn6    add    -6     8119   -
+addn8    add    -8     8117   -

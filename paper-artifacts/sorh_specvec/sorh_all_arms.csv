@@ -1,0 +1,14 @@
+arm,label,family,judge,dose,n,hack,degen,hc,p_vs_base
+base,baseline,baseline,GLM-5,,309,131,12,168,
+v3c_cl35_t-3,opt cap $-$3,opt cap,GLM-5,-3,309,104,9,196,0.00073
+v3b_cl35_t-15,opt$_{\mathrm{ref}}$ cap $-$15,opt cap,GLM-5,-15,309,70,9,230,3.1e-13
+v3b_cl35_t-25,opt$_{\mathrm{ref}}$ cap $-$25,opt cap,GLM-5,-25,309,57,25,229,2.5e-15
+v3c_k20,opt add 20,opt add,GLM-5,20,309,70,34,207,4.4e-10
+v3b_k24,opt$_{\mathrm{ref}}$ add 24,opt add,GLM-5,24,309,38,18,254,1.3e-20
+v3b_k28,opt$_{\mathrm{ref}}$ add 28,opt add,GLM-5,28,309,18,34,258,4.8e-27
+vspec_f40,$v_{\mathrm{spec}}$ floor $+40$,spec floor,GLM-5,40,309,93,23,194,0.00016
+vspec_a24,$v_{\mathrm{spec}}$ add $+24$,spec add,GLM-5,24,309,83,9,218,2.8e-07
+vspec_a32,$v_{\mathrm{spec}}$ add $+32$,spec add,GLM-5,32,309,89,27,193,2.1e-05
+u_an24,$u$ add $-$24,u add,GLM-5,-24,309,86,2,221,3.7e-08
+base,baseline (GPT-5.5 judge),baseline,GPT-5.5,,309,110,13,188,
+u_cl_t-20,$u$ cap $-$20 (GPT-5.5 judge),u cap,GPT-5.5,-20,309,96,12,202,0.049

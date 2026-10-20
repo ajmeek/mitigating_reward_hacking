@@ -1,0 +1,31 @@
+# School of Reward Hacks dose sweep for the layer-35 add-mode optimized vectors (experiments/opt-vector/artifacts/opt_27b_L35_v3b, _v3c).
+# Add mode: h += dose * v, positive = away from hacking; dose = k / ||v|| with ||v|| = 24, so <vec>_k<k> adds k units along the unit vector.
+# Run on the dev set (artifacts/dev/ids.json), cap 16384; results under artifacts/l35_add/dev/. base_loc is an unsteered passthrough
+# used only to check a second server delivers the same outputs (not part of the sweep).
+# name        mode  dose     port  artifact
+base          none  -        8140  -
+v3b_k2       add   0.0833   8141  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3b_k4       add   0.1667   8142  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3b_k6       add   0.2500   8143  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3b_k8       add   0.3333   8144  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3b_k10      add   0.4167   8145  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3b_k12      add   0.5000   8146  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3b_k16      add   0.6667   8147  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3b_k20      add   0.8333   8148  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3b_k24      add   1.0000   8149  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3b_k28      add   1.1667   8150  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3b_k32      add   1.3333   8151  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3b_k40      add   1.6667   8152  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+base_loc      none  -        8160  -
+v3c_k2       add   0.0833   8161  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+v3c_k4       add   0.1667   8162  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+v3c_k6       add   0.2500   8163  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+v3c_k8       add   0.3333   8164  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+v3c_k10      add   0.4167   8165  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+v3c_k12      add   0.5000   8166  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+v3c_k16      add   0.6667   8167  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+v3c_k20      add   0.8333   8168  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+v3c_k24      add   1.0000   8169  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+v3c_k28      add   1.1667   8170  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+v3c_k32      add   1.3333   8171  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+v3c_k40      add   1.6667   8172  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors

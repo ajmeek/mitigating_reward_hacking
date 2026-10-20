@@ -1,0 +1,8 @@
+# Held-out evaluation of the add-mode optimized vectors at the doses the dev sweep selected (sorh select --rule minhack --degen-cap 0.15).
+# Prompts: artifacts/eval/ids.json; cap 16384. base_loc is an unsteered passthrough for a two-server delivery check only (not evaluated).
+# name        mode  dose     port  artifact
+base          none  -        8180  -
+v3b_k28       add   1.1667   8181  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3b_k24       add   1.0000   8182  experiments/opt-vector/artifacts/opt_27b_L35_v3b.safetensors
+v3c_k20       add   0.8333   8183  experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+base_loc      none  -        8184  -

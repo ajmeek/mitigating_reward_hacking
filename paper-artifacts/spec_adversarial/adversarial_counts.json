@@ -1,0 +1,5 @@
+{
+ "hack": 5,
+ "n": 24,
+ "logs": "experiments/spec-adversarial-instruction/data/logs/advspec/conflicting/s42"
+}

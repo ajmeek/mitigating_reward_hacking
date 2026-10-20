@@ -1,0 +1,22 @@
+{
+  "recipe": "v1_cites: see experiments/spec-vector/scripts/fit_spec_vectors.py (docstring); per-rollout DiffMean at L35 on the spec-basetasks bf16 replay (prefix-reuse), unit",
+  "n_rollouts": 141,
+  "pooled_tokens": 90364,
+  "labels_sha": "776f810ab4da5897",
+  "sign": "POSITIVE = AWAY from hacking: positive = toward the spec (spec-citing reasoning / spec text); the artifact the add arms load",
+  "cos_u": -0.30297657664223904,
+  "cos_s": 0.5549173491442329,
+  "cos_e": 0.4019315976285737,
+  "experiment": "experiments/spec-vector",
+  "capture": "s3://steering-reasoning-artifacts/activations/spec-basetasks_bf16_L31_35",
+  "layer_indices": [
+    35
+  ],
+  "shape": [
+    1,
+    5120
+  ],
+  "layer_norms": {
+    "35": 1.0
+  }
+}

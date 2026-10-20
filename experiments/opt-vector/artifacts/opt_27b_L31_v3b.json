@@ -1,0 +1,92 @@
+{
+  "method": "optimization_src_dst",
+  "extraction_model": "Qwen/Qwen3.5-27B",
+  "label_source": "mistrace judge_label==True & kind=='reasoning'",
+  "split": "train",
+  "excluded_task_ids": [
+    "lcbhard_0",
+    "lcbhard_2",
+    "lcbhard_33",
+    "lcbhard_41",
+    "lcbhard_51",
+    "lcbhard_63",
+    "lcbhard_66",
+    "lcbhard_72"
+  ],
+  "excluded_reason": "all 8 prefill-intervention grid contexts are dropped from the fit; 4 of them (lcbhard_0/2/51/66) are TRAIN task_ids, so fitting on them would leak into the eval this vector is judged by",
+  "mistrace_revision": "7b4689723dd16fc992b116a8d6d3bb1a41627b62",
+  "sign": "positive = AWAY from hacking; steer with a POSITIVE scale to suppress. This is the vector as trained (src-only -log(1-p) suppression) and is the OPPOSITE polarity to diffmean_judge42_*, which stores positive = toward hacking. Do not reuse a diffmean scale sign here.",
+  "sign_mode": "as-trained",
+  "trainer_hook": "register_forward_pre_hook (steering_opt_batched.py:84) -> resid_pre",
+  "trainer_layer": 32,
+  "layer_offset_note": "trainer hooked resid_pre[32] == resid_post[31]; artifact layer_indices = [31]",
+  "vector_norm": 24.0,
+  "source_pt": "/workspace/steering_reasoning/experiments/opt-vector/artifacts/opt_27b_L32_v3b.pt",
+  "created_at": "2026-08-24T13:36:20.692689+00:00",
+  "steer_positions": "all tokens (prompt+completion); only_hook_prompt=False, dp.token=None -> _build_steer_mask `spec is None` branch",
+  "trainer_patches": {
+    "log1mexp_clamp": -1e-06,
+    "prompt_trailing_whitespace_moved_to_completion": "conditional (only rows whose tok(prompt) was not a token-prefix of tok(prompt+completion))",
+    "nan_guard_counts_missing_gradients": true,
+    "temperature_passed": 1.0,
+    "model_params_frozen": true
+  },
+  "train": {
+    "lr": 0.3,
+    "max_iters": 24,
+    "max_norm": 24.0,
+    "temperature": 1.0,
+    "batch_size": 1,
+    "n_datapoints": 108,
+    "n_src": 108,
+    "n_dst": 648,
+    "n_task_ids": 13,
+    "n_contexts": 29,
+    "loss_first": 1159432.9202248752,
+    "loss_last": 735.0404892269289,
+    "loss_history": [
+      1159432.9202248752,
+      373998.8878997927,
+      193589.3030534375,
+      140660.6122046709,
+      78371.3475923948,
+      46778.122938510234,
+      27217.985922741704,
+      16582.22216638853,
+      10189.734488934278,
+      8502.77590301272,
+      5017.32421469118,
+      5635.840264614089,
+      3119.25047064526,
+      1521.9890590226278,
+      1585.222265006043,
+      1085.0148820914328,
+      703.1294264479075,
+      801.8264104975387,
+      1692.3746552821249,
+      437.54588069784586,
+      449.7022908773506,
+      863.7391359111643,
+      643.4742475890525,
+      252.48496559634805,
+      735.0404892269289
+    ],
+    "n_iters": 25,
+    "iters_with_no_gradient": 0,
+    "iters_with_nan_gradient": 0,
+    "saturated_at_max_norm": true,
+    "peak_gpu_mem_gb": 74.56,
+    "elapsed_seconds": 19241.31,
+    "examples_path": "/workspace/steering_reasoning/experiments/opt-vector/data/rh_src_train_1k_v3b.jsonl"
+  },
+  "layer_indices": [
+    31
+  ],
+  "shape": [
+    1,
+    5120
+  ],
+  "layer_norms": {
+    "31": 24.0
+  }
+}

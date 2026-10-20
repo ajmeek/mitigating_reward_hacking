@@ -1,0 +1,94 @@
+{
+ "artifact": "experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors",
+ "layer": 35,
+ "capture": "data/captures/qwen35_27b_bf16_token_L35",
+ "calibration_split": "val",
+ "n_segments": {
+  "hack": 83,
+  "other": 7144,
+  "decline": 201
+ },
+ "cos_with_u": -0.02150137536227703,
+ "rows": [
+  {
+   "u_threshold": 0,
+   "hack_bind_fraction": 0.4578,
+   "matched_on": "hack",
+   "matched_threshold": 7.758,
+   "v_bind": {
+    "hack": 0.4578,
+    "other": 0.2361,
+    "decline": 0.8657
+   },
+   "u_bind": {
+    "hack": 0.4578,
+    "other": 0.0064,
+    "decline": 0.0
+   }
+  },
+  {
+   "u_threshold": -4,
+   "hack_bind_fraction": 0.7349,
+   "matched_on": "hack",
+   "matched_threshold": 6.357,
+   "v_bind": {
+    "hack": 0.7349,
+    "other": 0.4306,
+    "decline": 0.9353
+   },
+   "u_bind": {
+    "hack": 0.7349,
+    "other": 0.026,
+    "decline": 0.0
+   }
+  },
+  {
+   "u_threshold": -8,
+   "hack_bind_fraction": 0.8916,
+   "matched_on": "hack",
+   "matched_threshold": 5.702,
+   "v_bind": {
+    "hack": 0.8916,
+    "other": 0.5308,
+    "decline": 0.9652
+   },
+   "u_bind": {
+    "hack": 0.8916,
+    "other": 0.4288,
+    "decline": 0.0149
+   }
+  },
+  {
+   "u_threshold": -12,
+   "hack_bind_fraction": 1.0,
+   "matched_on": "ordinary",
+   "matched_threshold": 4.543,
+   "v_bind": {
+    "hack": 0.988,
+    "other": 0.791,
+    "decline": 0.99
+   },
+   "u_bind": {
+    "hack": 1.0,
+    "other": 0.791,
+    "decline": 0.1095
+   }
+  },
+  {
+   "u_threshold": -16,
+   "hack_bind_fraction": 1.0,
+   "matched_on": "ordinary",
+   "matched_threshold": 3.821,
+   "v_bind": {
+    "hack": 1.0,
+    "other": 0.9499,
+    "decline": 1.0
+   },
+   "u_bind": {
+    "hack": 1.0,
+    "other": 0.9499,
+    "decline": 0.1642
+   }
+  }
+ ]
+}

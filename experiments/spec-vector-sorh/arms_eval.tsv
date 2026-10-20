@@ -1,0 +1,8 @@
+# Held-out evaluation (309 writing prompts, artifacts/ids_heldout309.json) of the doses the dev sweep selected, plus the next-milder
+# spec-add dose. Rows copied from arms_dev.tsv.
+# name           mode   dose   port  artifact
+base             none   -      8150  -
+vspec_f40       clamp  -40   8167  experiments/spec-vector/artifacts/v1_cites_neg_L35.safetensors
+vspec_a24        add    24     8173  experiments/spec-vector/artifacts/v1_cites_L35.safetensors
+vspec_a32        add    32     8175  experiments/spec-vector/artifacts/v1_cites_L35.safetensors
+u_an24           add    -24    8183  -

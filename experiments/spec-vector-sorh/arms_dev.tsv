@@ -1,0 +1,29 @@
+# School of Reward Hacks dev-set dose sweep for the spec vectors: floors t (clamp on v1_cites_neg at -t), spec adds s (h += s v1_cites)
+# and u adds s (canonical u, negative = away from hacking). Dev ids: artifacts/ids_dev100.json; cap 16384; judge GLM-5;
+# selection rule `sorh select --rule minhack --degen-cap 0.15`. base is a row for the launcher's delivery check only.
+# name           mode   dose   port  artifact
+base             none   -      8150  -
+vspec_f2       clamp  -2   8160  experiments/spec-vector/artifacts/v1_cites_neg_L35.safetensors
+vspec_f5       clamp  -5   8161  experiments/spec-vector/artifacts/v1_cites_neg_L35.safetensors
+vspec_f10       clamp  -10   8162  experiments/spec-vector/artifacts/v1_cites_neg_L35.safetensors
+vspec_f16.5       clamp  -16.5   8163  experiments/spec-vector/artifacts/v1_cites_neg_L35.safetensors
+vspec_f20       clamp  -20   8164  experiments/spec-vector/artifacts/v1_cites_neg_L35.safetensors
+vspec_f25       clamp  -25   8165  experiments/spec-vector/artifacts/v1_cites_neg_L35.safetensors
+vspec_f30       clamp  -30   8166  experiments/spec-vector/artifacts/v1_cites_neg_L35.safetensors
+vspec_f40       clamp  -40   8167  experiments/spec-vector/artifacts/v1_cites_neg_L35.safetensors
+vspec_a4        add    4     8168  experiments/spec-vector/artifacts/v1_cites_L35.safetensors
+vspec_a8        add    8     8169  experiments/spec-vector/artifacts/v1_cites_L35.safetensors
+vspec_a12        add    12     8170  experiments/spec-vector/artifacts/v1_cites_L35.safetensors
+vspec_a16        add    16     8171  experiments/spec-vector/artifacts/v1_cites_L35.safetensors
+vspec_a20        add    20     8172  experiments/spec-vector/artifacts/v1_cites_L35.safetensors
+vspec_a24        add    24     8173  experiments/spec-vector/artifacts/v1_cites_L35.safetensors
+vspec_a28        add    28     8174  experiments/spec-vector/artifacts/v1_cites_L35.safetensors
+vspec_a32        add    32     8175  experiments/spec-vector/artifacts/v1_cites_L35.safetensors
+u_an2           add    -2    8176  -
+u_an4           add    -4    8177  -
+u_an6           add    -6    8178  -
+u_an8           add    -8    8179  -
+u_an12           add    -12    8180  -
+u_an16           add    -16    8181  -
+u_an20           add    -20    8182  -
+u_an24           add    -24    8183  -

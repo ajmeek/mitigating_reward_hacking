@@ -1,0 +1,5 @@
+# Arms of the spec-prompting comparison (read by scripts/run_arms.sh via scripts/run_all.sh). Both arms are mode none
+# (cap-only proxy, --no-steer); the arm variable is the system-message suffix. Ports distinct from diff-mean-steering's.
+# name   mode   dose   port   artifact   suffix
+base     none   -      8130   -          -
+spec     none   -      8131   -          spec/anti_reward_hacking_spec_prompt.txt

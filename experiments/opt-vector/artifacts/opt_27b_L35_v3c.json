@@ -1,0 +1,92 @@
+{
+  "method": "optimization_src_dst",
+  "extraction_model": "Qwen/Qwen3.5-27B",
+  "label_source": "mistrace judge_label==True & kind=='reasoning'",
+  "split": "train",
+  "excluded_task_ids": [
+    "lcbhard_0",
+    "lcbhard_2",
+    "lcbhard_33",
+    "lcbhard_41",
+    "lcbhard_51",
+    "lcbhard_63",
+    "lcbhard_66",
+    "lcbhard_72"
+  ],
+  "excluded_reason": "all 8 prefill-intervention grid contexts are dropped from the fit; 4 of them (lcbhard_0/2/51/66) are TRAIN task_ids, so fitting on them would leak into the eval this vector is judged by",
+  "mistrace_revision": "7b4689723dd16fc992b116a8d6d3bb1a41627b62",
+  "sign": "positive = AWAY from hacking; steer with a POSITIVE scale to suppress. This is the vector as trained (src-only -log(1-p) suppression) and is the OPPOSITE polarity to diffmean_judge42_*, which stores positive = toward hacking. Do not reuse a diffmean scale sign here.",
+  "sign_mode": "as-trained",
+  "trainer_hook": "register_forward_pre_hook (steering_opt_batched.py:84) -> resid_pre",
+  "trainer_layer": 36,
+  "layer_offset_note": "trainer hooked resid_pre[36] == resid_post[35]; artifact layer_indices = [35]",
+  "vector_norm": 24.0,
+  "source_pt": "experiments/opt-vector/artifacts/opt_27b_L36_v3c.pt",
+  "created_at": "2026-09-19T05:29:50.965059+00:00",
+  "steer_positions": "all tokens (prompt+completion); only_hook_prompt=False, dp.token=None -> _build_steer_mask `spec is None` branch",
+  "trainer_patches": {
+    "log1mexp_clamp": -1e-06,
+    "prompt_trailing_whitespace_moved_to_completion": "conditional (only rows whose tok(prompt) was not a token-prefix of tok(prompt+completion))",
+    "nan_guard_counts_missing_gradients": true,
+    "temperature_passed": 1.0,
+    "model_params_frozen": true
+  },
+  "train": {
+    "lr": 0.3,
+    "max_iters": 24,
+    "max_norm": 24.0,
+    "temperature": 1.0,
+    "batch_size": 1,
+    "n_datapoints": 108,
+    "n_src": 108,
+    "n_dst": 648,
+    "n_task_ids": 13,
+    "n_contexts": 29,
+    "loss_first": 3917980.307965815,
+    "loss_last": 16622.649096909532,
+    "loss_history": [
+      3917980.307965815,
+      1459037.1755946595,
+      958936.833211951,
+      665746.2335807085,
+      469877.05263027735,
+      348368.0128277847,
+      268921.022407162,
+      202298.08700363708,
+      166785.01636600494,
+      144591.3293462469,
+      111164.56136970548,
+      91187.0362094082,
+      82790.7355334051,
+      67431.07093287818,
+      52106.43972694315,
+      53190.66524570575,
+      35333.74385767337,
+      43554.069240258075,
+      31500.828010863857,
+      27797.9454853973,
+      24814.624596534122,
+      18525.261407830847,
+      29487.709723659325,
+      28480.12047264783,
+      16622.649096909532
+    ],
+    "n_iters": 25,
+    "iters_with_no_gradient": 0,
+    "iters_with_nan_gradient": 0,
+    "saturated_at_max_norm": true,
+    "peak_gpu_mem_gb": 59.23,
+    "elapsed_seconds": 3281.4,
+    "examples_path": "experiments/opt-vector/data/rh_src_train_1k_v3c.jsonl"
+  },
+  "layer_indices": [
+    35
+  ],
+  "shape": [
+    1,
+    5120
+  ],
+  "layer_norms": {
+    "35": 24.0
+  }
+}

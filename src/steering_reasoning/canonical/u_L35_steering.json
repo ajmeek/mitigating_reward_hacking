@@ -1,0 +1,11 @@
+{
+ "layer_indices": [
+  35
+ ],
+ "recipe": "u = norm(a_hat - b_hat); a: judge-hack vs rest, b: judge-DECLINE vs rest; per-rollout DiffMean on train rollouts, bf16 all-103 segment means (scripts/fit_directions_sweep.py), row 35 of directions_bf16_all_layers.safetensors",
+ "capture_precision": "bf16",
+ "cos_a_b": 0.351558,
+ "source": "unit; norm(a_hat - b_hat) from experiments/probe-refit-bf16/artifacts/directions_bf16_all_layers.safetensors row 35 [860ecb7dfa957d51]; scripts/fit_directions_sweep.py",
+ "sign": "positive pole = hacking; negative pole = declining / honest conclusion",
+ "role": "CANONICAL steering vector (2026-09-13). Every steering arm in the paper's u rows uses this file."
+}

@@ -1,0 +1,94 @@
+{
+ "artifact": "src/steering_reasoning/canonical/u_L35_steering.safetensors",
+ "layer": 35,
+ "capture": "data/captures/qwen35_27b_bf16_token_L31_35",
+ "calibration_split": "val",
+ "n_segments": {
+  "hack": 83,
+  "other": 7144,
+  "decline": 201
+ },
+ "cos_with_u": 1.000000238418579,
+ "rows": [
+  {
+   "u_threshold": 0,
+   "hack_bind_fraction": 0.4578,
+   "matched_on": "hack",
+   "matched_threshold": -0.004,
+   "v_bind": {
+    "hack": 0.4578,
+    "other": 0.0064,
+    "decline": 0.0
+   },
+   "u_bind": {
+    "hack": 0.4578,
+    "other": 0.0064,
+    "decline": 0.0
+   }
+  },
+  {
+   "u_threshold": -4,
+   "hack_bind_fraction": 0.7349,
+   "matched_on": "hack",
+   "matched_threshold": -4.046,
+   "v_bind": {
+    "hack": 0.7349,
+    "other": 0.0263,
+    "decline": 0.0
+   },
+   "u_bind": {
+    "hack": 0.7349,
+    "other": 0.026,
+    "decline": 0.0
+   }
+  },
+  {
+   "u_threshold": -8,
+   "hack_bind_fraction": 0.8916,
+   "matched_on": "hack",
+   "matched_threshold": -7.927,
+   "v_bind": {
+    "hack": 0.8916,
+    "other": 0.4162,
+    "decline": 0.0149
+   },
+   "u_bind": {
+    "hack": 0.8916,
+    "other": 0.4288,
+    "decline": 0.0149
+   }
+  },
+  {
+   "u_threshold": -12,
+   "hack_bind_fraction": 1.0,
+   "matched_on": "ordinary",
+   "matched_threshold": -11.999,
+   "v_bind": {
+    "hack": 1.0,
+    "other": 0.791,
+    "decline": 0.1095
+   },
+   "u_bind": {
+    "hack": 1.0,
+    "other": 0.791,
+    "decline": 0.1095
+   }
+  },
+  {
+   "u_threshold": -16,
+   "hack_bind_fraction": 1.0,
+   "matched_on": "ordinary",
+   "matched_threshold": -15.997,
+   "v_bind": {
+    "hack": 1.0,
+    "other": 0.9499,
+    "decline": 0.1642
+   },
+   "u_bind": {
+    "hack": 1.0,
+    "other": 0.9499,
+    "decline": 0.1642
+   }
+  }
+ ]
+}

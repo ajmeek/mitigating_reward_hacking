@@ -1,0 +1,164 @@
+{
+ "layer": 35,
+ "bin_width": 0.5,
+ "units": "raw projection on the unit vector",
+ "u": {
+  "artifact": "src/steering_reasoning/canonical/u_L35_steering.safetensors",
+  "positive_pole": "hacking",
+  "cap_grid": [
+   0,
+   -4,
+   -8,
+   -12,
+   -16
+  ],
+  "operator": "h <- h - max(0, u.h - tau) u  (cap: touches tokens above tau)"
+ },
+ "v_cite": {
+  "artifact": "experiments/spec-vector/artifacts/v1_cites_L35.safetensors",
+  "positive_pole": "spec-citing",
+  "floors": [
+   5,
+   10,
+   16.5
+  ],
+  "add_doses": [
+   8,
+   16
+  ],
+  "cleavage_90pct_citing": 16.5,
+  "equal_error": 16.7,
+  "operator": "h <- h + max(0, t - v.h) v  (floor: touches tokens below t; = cap on -v at -t)",
+  "cos_with_u": -0.3029765784740448
+ },
+ "token_class_medians": {
+  "u": {
+   "citing_reasoning": -15.669279098510742,
+   "restating": -14.744150161743164,
+   "other_spec_reasoning": -8.121768951416016,
+   "base_reasoning": -8.224617004394531,
+   "citing_visible": -15.008278846740723
+  },
+  "v": {
+   "citing_reasoning": 26.70221710205078,
+   "restating": 27.284656524658203,
+   "other_spec_reasoning": 3.62444806098938,
+   "base_reasoning": 4.961643218994141,
+   "citing_visible": 24.590829849243164
+  }
+ },
+ "val_segment_medians": {
+  "u": {
+   "hack": -0.35802412033081055,
+   "decline": -20.83292007446289,
+   "other": -8.507541179656982
+  },
+  "v": {
+   "hack": 7.348903656005859,
+   "decline": 18.8034725189209,
+   "other": 4.630093574523926
+  }
+ },
+ "bind_fractions": {
+  "u_cap": {
+   "0": {
+    "hack": 0.4578313253012048,
+    "decline": 0.0,
+    "other": 0.006438969764837626,
+    "token_citing_reasoning": 0.014611850518637805,
+    "token_restating": 0.006576367848868295,
+    "token_other_spec_reasoning": 0.002893150684931507,
+    "token_base_reasoning": 0.0074444444444444445,
+    "token_citing_visible": 0.01039242436401573
+   },
+   "-4": {
+    "hack": 0.7349397590361446,
+    "decline": 0.0,
+    "other": 0.026035834266517358,
+    "token_citing_reasoning": 0.02969734286932222,
+    "token_restating": 0.014293352343610765,
+    "token_other_spec_reasoning": 0.04475342465753425,
+    "token_base_reasoning": 0.04669444444444444,
+    "token_citing_visible": 0.02882994944225985
+   },
+   "-8": {
+    "hack": 0.891566265060241,
+    "decline": 0.014925373134328358,
+    "other": 0.4287513997760358,
+    "token_citing_reasoning": 0.06441528915833847,
+    "token_restating": 0.046872215291391905,
+    "token_other_spec_reasoning": 0.4862,
+    "token_base_reasoning": 0.4743888888888889,
+    "token_citing_visible": 0.0642604927373405
+   },
+   "-12": {
+    "hack": 1.0,
+    "decline": 0.10945273631840796,
+    "other": 0.791013437849944,
+    "token_citing_reasoning": 0.19074740681096955,
+    "token_restating": 0.21331313491356266,
+    "token_other_spec_reasoning": 0.7763424657534247,
+    "token_base_reasoning": 0.7745555555555556,
+    "token_citing_visible": 0.22321643527806756
+   },
+   "-16": {
+    "hack": 1.0,
+    "decline": 0.16417910447761194,
+    "other": 0.9498880179171333,
+    "token_citing_reasoning": 0.5298157533273339,
+    "token_restating": 0.6323649973266797,
+    "token_other_spec_reasoning": 0.9124301369863014,
+    "token_base_reasoning": 0.9140555555555555,
+    "token_citing_visible": 0.6130928496910361
+   }
+  },
+  "v_floor": {
+   "5": {
+    "hack": 0.25301204819277107,
+    "decline": 0.0,
+    "other": 0.5218365061590146,
+    "token_citing_reasoning": 0.0016222232747596268,
+    "token_restating": 0.00019604348600962395,
+    "token_other_spec_reasoning": 0.5804986301369863,
+    "token_base_reasoning": 0.5026388888888889,
+    "token_citing_visible": 0.0019861969344354387
+   },
+   "10": {
+    "hack": 0.6987951807228916,
+    "decline": 0.03980099502487562,
+    "other": 0.7824748040313549,
+    "token_citing_reasoning": 0.024380713304599063,
+    "token_restating": 0.019818214222063802,
+    "token_other_spec_reasoning": 0.7755479452054794,
+    "token_base_reasoning": 0.7394444444444445,
+    "token_citing_visible": 0.01586951288018618
+   },
+   "16.5": {
+    "hack": 0.9879518072289156,
+    "decline": 0.19402985074626866,
+    "other": 0.9490481522956327,
+    "token_citing_reasoning": 0.09941742054658267,
+    "token_restating": 0.09228301550525753,
+    "token_other_spec_reasoning": 0.8945369863013699,
+    "token_base_reasoning": 0.9236944444444445,
+    "token_citing_visible": 0.13459995184977128
+   }
+  }
+ },
+ "token_class_n": {
+  "citing_reasoning": 84452,
+  "restating": 56110,
+  "other_spec_reasoning": 365000,
+  "base_reasoning": 36000,
+  "citing_visible": 49844
+ },
+ "val_segment_n": {
+  "hack": 83,
+  "decline": 201,
+  "other": 7144
+ },
+ "sources": {
+  "tokens": "experiments/spec-vector/data/fit_out (in-sample subsample of the fit rollouts; see extract_pool_stats.py)",
+  "val_segments": "data/captures/qwen35_27b_bf16_token_L31_35 val split, judge labels from experiments/anti-hack-labeling/artifacts"
+ }
+}

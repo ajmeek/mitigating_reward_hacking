@@ -1,0 +1,10 @@
+{
+ "model": "Qwen/Qwen3.5-27B served bf16; directions fit on the bf16 all-103 capture (s3://steering-reasoning-artifacts/activations/qwen35_27b_bf16_all103), train rollouts",
+ "created": "2026-09-13",
+ "u": "unit; norm(a_hat - b_hat) from experiments/probe-refit-bf16/artifacts/directions_bf16_all_layers.safetensors row 35 [860ecb7dfa957d51]; scripts/fit_directions_sweep.py",
+ "e": "unit; experiments/wrapup-axis-paperstyle/artifacts/e_paper_bf16_L35.safetensors:e_paper_any_call [d44d7ab0bf751d03]; scripts/fit_e.py --layer 35",
+ "layer": "35",
+ "s": "unit; norm(a_hat + b_hat) from the same a, b rows [860ecb7dfa957d51]",
+ "cos_ab": "0.351558",
+ "centering": "no stored mean: scripts centre segments on the mean of the capture they plot"
+}

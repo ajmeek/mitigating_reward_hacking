@@ -1,0 +1,11 @@
+# Arms of the spec-vector steering comparison (read by scripts/run_arms.sh). Ports 8140+ so this table cannot collide with
+# diff-mean-steering (8110-8119, 8161-8172) or spec-prompting (8130-8131) on one eval box.
+# Vectors: experiments/spec-vector/artifacts/ (unit, L35, positive = toward the spec).
+# Floor arms: the server's clamp is a CEILING on h.v, so a floor on h.v at t is a clamp on the NEGATED artifact at -t.
+# Add arms: h += s * v1_cites on every written token. The unsteered and spec-prompt references are spec-prompting's base and spec arms.
+# name         mode   dose   port   artifact                                                   suffix
+v1floor16      clamp  -16.5  8141   experiments/spec-vector/artifacts/v1_cites_neg_L35.safetensors  -
+v1add8         add    8      8143   experiments/spec-vector/artifacts/v1_cites_L35.safetensors      -
+v1add16        add    16     8144   experiments/spec-vector/artifacts/v1_cites_L35.safetensors      -
+v1floor5       clamp  -5     8145   experiments/spec-vector/artifacts/v1_cites_neg_L35.safetensors  -
+v1floor10      clamp  -10    8146   experiments/spec-vector/artifacts/v1_cites_neg_L35.safetensors  -

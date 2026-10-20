@@ -1,0 +1,68 @@
+# Base figure style for this repo: the rules in README.md, as rcParams.
+# The figure is transparent so it takes the background it lands on.
+figure.facecolor: none
+figure.edgecolor: none
+axes.facecolor: none
+savefig.facecolor: none
+savefig.edgecolor: none
+savefig.transparent: True
+figure.figsize: 8, 4.5
+figure.dpi: 150
+savefig.dpi: 150
+savefig.bbox: tight
+savefig.pad_inches: 0.08
+
+text.color: 111111
+axes.labelcolor: 111111
+axes.edgecolor: 111111
+axes.linewidth: 1.0
+axes.spines.top: False
+axes.spines.right: False
+axes.titlelocation: left
+axes.titleweight: normal
+axes.titlesize: 11
+axes.titlepad: 8
+axes.labelsize: 9
+axes.grid: False
+
+xtick.color: 4a4a4a
+ytick.color: 4a4a4a
+xtick.labelcolor: 111111
+ytick.labelcolor: 111111
+xtick.labelsize: 8.5
+ytick.labelsize: 8.5
+xtick.direction: out
+ytick.direction: out
+xtick.major.width: 0.8
+ytick.major.width: 0.8
+xtick.major.size: 3
+ytick.major.size: 3
+
+# teal-muted first, then the categorical lab-notebook tones; vermillion is
+# not in the cycle: use it deliberately for the baseline / bad case.
+axes.prop_cycle: cycler('color', ['3a7d85', '9c6c24', '5a6f33', '356a7e', '76566f'])
+lines.linewidth: 1.2
+lines.markeredgecolor: 111111   # point markers outlined in ink (README, Marks)
+lines.markeredgewidth: 0.6
+scatter.edgecolors: 111111
+errorbar.capsize: 0      # error bars are plain strokes; pass ecolor=ink (see README, Error bars)
+lines.markersize: 4
+patch.linewidth: 1.0
+patch.edgecolor: 111111
+patch.force_edgecolor: True
+# image.cmap is set to paper_teal by plot_style.use(); rc files cannot name custom maps
+
+legend.frameon: False
+legend.fontsize: 8.5
+legend.handlelength: 1.5
+
+# one face on the figure: Google Sans Code for everything, title included.
+# "Google Sans Code 450" is a static single-weight instance if installed; the
+# stack falls back to the variable font, then to system monospace faces.
+font.family: monospace
+font.monospace: Google Sans Code 450, Google Sans Code, SF Mono, Menlo, DejaVu Sans Mono
+font.sans-serif: Google Sans Code 450, Google Sans Code, Helvetica Neue, Helvetica, Arial, DejaVu Sans
+font.size: 9
+mathtext.fontset: dejavusans
+axes.formatter.use_mathtext: True
+axes.formatter.limits: -4, 5

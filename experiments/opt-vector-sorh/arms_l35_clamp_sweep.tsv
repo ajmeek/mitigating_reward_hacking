@@ -1,0 +1,34 @@
+# School of Reward Hacks dose sweep for the layer-35 clamp-mode optimized vectors (opt_27b_L35_v3b_cl, _v3c_cl).
+# A clamp binds on tokens whose projection exceeds the threshold: lower = stronger. Thresholds calibrated on coding captures need not
+# transfer to these prompts, so the grid spans well above and below them. Dev set artifacts/dev/ids.json, cap 16384.
+# The optional sixth column routes an arm to a second server (e.g. an SSH tunnel to a second box); base2 is a passthrough to that
+# server used only by check-servers (base == base2 at temperature 0 shows the two servers are identical unsteered).
+# name          mode   dose   port  artifact                                                          upstream
+base            none   -      8110  -
+v3c_cl35_t12    clamp  12     8119  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3c_cl35_t10    clamp  10     8120  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3c_cl35_t8     clamp  8      8121  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3c_cl35_t6     clamp  6      8122  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3c_cl35_t4     clamp  4      8123  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3c_cl35_t2     clamp  2      8124  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3c_cl35_t0     clamp  0      8125  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3c_cl35_t-3    clamp  -3     8126  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3b_cl35_t12    clamp  12     8111  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3b_cl35_t10    clamp  10     8112  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3b_cl35_t8     clamp  8      8113  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3b_cl35_t6     clamp  6      8114  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3b_cl35_t4     clamp  4      8115  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3b_cl35_t2     clamp  2      8116  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3b_cl35_t0     clamp  0      8117  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3b_cl35_t-3    clamp  -3     8118  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+base2           none   -      8127  -                                                                 http://localhost:8002
+v3b_cl35_t-8    clamp  -8     8150  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3b_cl35_t-15   clamp  -15    8151  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3b_cl35_t-25   clamp  -25    8152  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3b_cl35_t-40   clamp  -40    8153  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3b_cl35_t-60   clamp  -60    8154  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3c_cl35_t-8    clamp  -8     8155  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3c_cl35_t-15   clamp  -15    8156  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3c_cl35_t-25   clamp  -25    8157  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3c_cl35_t-40   clamp  -40    8158  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3c_cl35_t-60   clamp  -60    8159  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors

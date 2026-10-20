@@ -1,0 +1,15 @@
+{
+ "cos(e_paper_any_call,u)": -0.23870572447776794,
+ "cos(e_paper_any_call,s)": 0.5952370166778564,
+ "cos(e_paper_any_call,e_withinturn_nearest_any_call)": 0.8799232244491577,
+ "cos(e_paper_any_call,e_withinturn_all_any_call)": 0.81843101978302,
+ "cos(e_withinturn_nearest_any_call,u)": -0.2295210212469101,
+ "cos(e_withinturn_nearest_any_call,s)": 0.4491337537765503,
+ "cos(e_withinturn_nearest_any_call,e_paper_any_call)": 0.8799232244491577,
+ "cos(e_withinturn_nearest_any_call,e_withinturn_all_any_call)": 0.9531369805335999,
+ "cos(e_withinturn_all_any_call,u)": -0.219552144408226,
+ "cos(e_withinturn_all_any_call,s)": 0.4212789833545685,
+ "cos(e_withinturn_all_any_call,e_paper_any_call)": 0.81843101978302,
+ "cos(e_withinturn_all_any_call,e_withinturn_nearest_any_call)": 0.9531369805335999,
+ "cos(logreg_any_call,e_paper_any_call)": 0.2597043216228485
+}

@@ -1,0 +1,10 @@
+[project]
+name = "steering-reasoning-serving"
+version = "0.1.0"
+description = "Isolated serving env: vLLM for local model endpoints (vllm-lens installs here later)"
+requires-python = ">=3.12"
+dependencies = [
+    "vllm>=0.24,<0.25",
+    "vllm-lens>=1.1",
+    "safetensors>=0.4",
+]

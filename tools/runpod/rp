@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+# Thin RunPod CLI wrapper. Never prints the API key.
+# =====================================================================================
+# COMPUTE PROVIDER. This is the authors' RunPod tooling, kept as a worked example.
+# >>> ADD COMPUTE TOOLING FOR YOUR PROVIDER HERE. <<<  Any GPU box that can run
+# serving/bootstrap.sh and expose vLLM over HTTP works. Credentials come from the repo-root
+# .env (COMPUTE_API_KEY for the provider, HF_TOKEN for the model; see .env.example).
+# =====================================================================================
+set -euo pipefail
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+[ -f "$REPO/.env" ] && { set -a; . "$REPO/.env"; set +a; }
+case "${1:-help}" in help|-h|--help) ;; *) K=; esac
+[ -n "${K+x}" ] && K="${COMPUTE_API_KEY:?COMPUTE_API_KEY missing from .env (see .env.example)}"
+REST="https://rest.runpod.io/v1"
+GQL="https://api.runpod.io/graphql"
+
+api()  { curl -s -H "Authorization: Bearer $K" -H 'Content-Type: application/json' "$@"; }
+gql()  { api "$GQL" -d "{\"query\":$(printf '%s' "$1" | jq -Rs .)}"; }
+
+case "${1:-help}" in
+
+balance)
+  gql 'query{myself{clientBalance currentSpendPerHr}}' \
+   | jq -r '.data.myself | "balance=$\(.clientBalance|.*100|round/100)  spend=$\(.currentSpendPerHr)/hr"' ;;
+
+prices)
+  gql 'query{gpuTypes{displayName memoryInGb securePrice communityPrice}}' \
+   | jq -r '["GPU","VRAM","SECURE","COMMUNITY"],(.data.gpuTypes[]|select(.displayName|test("H100|H200|A100|L40S|4090"))|[.displayName,(.memoryInGb|tostring)+"GB","$"+(.securePrice//0|tostring),"$"+(.communityPrice//0|tostring)])|@tsv' | column -t ;;
+
+ls|list)
+  api "$REST/pods" \
+   | jq -r '(["ID","NAME","GPU","N","STATUS","COST/HR"]|@tsv),(.[]|[.id,.name,(.machine.gpuTypeId//"-"),(.gpuCount|tostring),.desiredStatus,("$"+(.costPerHr|tostring))]|@tsv)' | column -t ;;
+
+vols)
+  api "$REST/networkvolumes" \
+   | jq -r '(["ID","NAME","GB","DC"]|@tsv),(.[]|[.id,.name,(.size|tostring),.dataCenterId]|@tsv)' | column -t ;;
+
+mkvol)   # mkvol <name> <sizeGB> <datacenterId>
+  api "$REST/networkvolumes" -X POST \
+    -d "{\"name\":\"$2\",\"size\":$3,\"dataCenterId\":\"$4\"}" | jq . ;;
+
+ssh)     # ssh <podId> [command...]
+  pid="$2"; shift 2 || true
+  info=$(api "$REST/pods/$pid")
+  host=$(jq -r '.publicIp // empty' <<<"$info")
+  port=$(jq -r '[.portMappings//{} | to_entries[] | select(.key=="22")][0].value // empty' <<<"$info")
+  [ -z "$host" ] && { echo "pod not running / no public IP yet"; jq -r .desiredStatus <<<"$info"; exit 1; }
+  exec ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p "$port" "root@$host" "$@" ;;
+tail)    # tail <podId> [remote-file]   (default: /workspace/logs/sweep.log) — follows a log on the pod
+  pid="$2"; f="${3:-/workspace/logs/sweep.log}"
+  exec "$0" ssh "$pid" "tail -n 40 -f $f" ;;
+
+sshcmd)  # print the raw ssh command
+  info=$(api "$REST/pods/$2")
+  echo "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p $(jq -r '[.portMappings//{}|to_entries[]|select(.key=="22")][0].value' <<<"$info") root@$(jq -r .publicIp <<<"$info")" ;;
+
+gpus)    # gpus  — GPU type ids (for create)
+  gql 'query{gpuTypes{id displayName memoryInGb securePrice}}' \
+   | jq -r '["ID","NAME","VRAM","SECURE"],(.data.gpuTypes[]|select(.id|test("H100|H200|A100"))|[.id,.displayName,(.memoryInGb|tostring)+"GB","$"+(.securePrice//0|tostring)])|@tsv' | column -t -s$'\t' ;;
+
+create)  # create <name> [gpuTypeId] [gpuCount]  — serving pod for this project: no volume, 200 GB container disk, ports 22 + 8000
+  name="$2"; gpu="${3:-NVIDIA H200}"; n="${4:-1}"
+  pub="$(cat "$HOME/.ssh/id_ed25519.pub")"
+  body=$(jq -n --arg name "$name" --arg gpu "$gpu" --argjson n "$n" --arg pub "$pub" '{
+    name:$name, imageName:"runpod/pytorch:1.1.0-cu1281-torch280-ubuntu2404",
+    gpuTypeIds:[$gpu], gpuCount:$n, cloudType:"SECURE", allowedCudaVersions:["13.0"],
+    containerDiskInGb:200, volumeInGb:0, ports:["22/tcp","8000/tcp"], env:{PUBLIC_KEY:$pub}}')
+  api "$REST/pods" -X POST -d "$body" | jq -c '{id,name,desiredStatus,costPerHr,machine:(.machine.gpuTypeId//null),error:(.error//null)}' ;;
+
+info)    # info <podId>
+  api "$REST/pods/$2" | jq '{id,name,desiredStatus,costPerHr,publicIp,portMappings,gpu:.machine.gpuTypeId,cuda:.machine.cudaVersion}' ;;
+
+stop)  api "$REST/pods/$2/stop"  -X POST | jq -r '.desiredStatus // .' ;;
+start) api "$REST/pods/$2/start" -X POST | jq -r '.desiredStatus // .' ;;
+rm)    api "$REST/pods/$2" -X DELETE -o /dev/null -w "deleted (http %{http_code})\n" ;;
+
+
+raw)   shift; api "$REST/$@" | jq . ;;
+
+*) echo "usage: rp <command> [args]   (RunPod CLI wrapper; reads COMPUTE_API_KEY from .env)"; echo -n "commands: "; grep -oE '^[a-z|]+\)' "$0" | tr -d ')' | tr '|' ' ' | tr '\n' ' '; echo ;;
+esac

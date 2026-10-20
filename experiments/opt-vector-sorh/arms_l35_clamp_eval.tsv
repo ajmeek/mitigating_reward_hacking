@@ -1,0 +1,8 @@
+# Held-out evaluation of the clamp-mode optimized vectors at the doses the dev sweep selected (minhack rule with degenerate share <= 0.15,
+# plus the honest-and-complete optimum as a milder second dose). Cap 16384, ids = artifacts/eval/ids.json. Sixth column = optional second server.
+# name           mode   dose   port  artifact                                                          upstream
+base             none   -      8130  -
+v3c_cl35_t-3     clamp  -3     8131  experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+v3b_cl35_t-15    clamp  -15    8132  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+v3b_cl35_t-25    clamp  -25    8133  experiments/opt-vector/artifacts/opt_27b_L35_v3b_cl.safetensors  http://localhost:8002
+base2            none   -      8134  -                                                                 http://localhost:8002

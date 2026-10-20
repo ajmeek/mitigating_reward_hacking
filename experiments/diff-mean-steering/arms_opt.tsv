@@ -1,0 +1,12 @@
+# Optimized-vector arms (experiments/opt-vector; the v3c vectors at layer 35). Same columns as arms.tsv; the unsteered
+# reference is arms.tsv's base arm, so run that table too (or add its base row here).
+# optc_r<k>: clamp on the optimized clamp vector at raw threshold -k in its own basis (the regime it was trained under).
+# opta_k<k>: add k units along the unit optimized add vector; the artifact has norm 24, so dose = k / 24.
+# Thresholds do not transfer between vectors: for a new vector run scripts/calibrate_thresholds.py --artifact <vector>.
+# name        mode   dose     port   artifact
+optc_r4     clamp  -4       8170   experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+optc_r8     clamp  -8       8171   experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+optc_r12    clamp  -12      8172   experiments/opt-vector/artifacts/opt_27b_L35_v3c_cl.safetensors
+opta_k12    add    0.5      8161   experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+opta_k16    add    0.6667   8162   experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors
+opta_k20    add    0.8333   8163   experiments/opt-vector/artifacts/opt_27b_L35_v3c.safetensors

@@ -1,0 +1,40 @@
+# Fleet config for the dose-response sweep: which arm table to run, the work per arm, and the vLLM
+# servers (replicas) to spread the rollouts over. Copy and edit; `uv run python scripts/fleet.py plan
+# experiments/diff-mean-steering/fleet.toml` validates it offline, `up` resolves the replicas, `run`
+# executes (resumable; state under data/fleet/<run_id>/). Give every new run its own run_id.
+run_id = "dose-sweep"
+arms = "arms.tsv"            # or arms_opt.tsv for the optimized-vector arms
+model = "Qwen/Qwen3.5-27B"
+
+[work]
+variants = ["conflicting", "original"]   # impossible tests (hack rate) and the paired original tests (solve rate)
+seeds = [42, 43]
+message_limit = 120
+max_tokens = 16384
+# tasks = ["lcbhard_4", ...]            # subset of the test split for a smoke run (default: all 30)
+
+[scheduling]
+batch_size = 1           # rollouts per Inspect batch; a batch holds its slots until its slowest rollout ends
+max_live_rollouts = 64   # across all replicas; sized to the eval box (16 vCPU / 61 GB ran 64)
+max_job_attempts = 2
+metrics_interval = 30
+
+# One [[replicas]] block per server. `external` is any box you brought up yourself (serving/bootstrap.sh);
+# `runpod` creates a pod through tools/runpod/rp (the authors' provider; add yours in fleet/providers.py).
+[[replicas]]
+name = "gpu-a"
+provider = "external"
+upstream = "http://<host>:<port>"
+gpu = "NVIDIA H200"
+live_rollouts = 32       # ~1.3x the server's max_sequences keeps it busy despite between-turn gaps
+max_sequences = 32
+weight = 1.0
+
+[[replicas]]
+name = "gpu-b"
+provider = "external"
+upstream = "http://<host>:<port>"
+gpu = "NVIDIA H200"
+live_rollouts = 32
+max_sequences = 32
+weight = 1.0

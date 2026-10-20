@@ -1,0 +1,5 @@
+arm,variant,group,rollouts,errored,n_scored,tasks,count,rate,ci90_lo,ci90_hi,at_limit,honest_escalation,unsat_final,unsat_reasoning_only,wrong_unsat,cite_rate,median_turns,median_out_tokens,median_post_unsat_turns
+base,conflicting,all,146,0,146,73,26,0.1780821917808219,0.1319997065,0.2358806467,79,29,5,96,0,0.0,55.0,51652.5,24.5
+base,conflicting,?,146,0,146,73,26,0.1780821917808219,0.1319997065,0.2358806467,79,29,5,96,0,0.0,55.0,51652.5,24.5
+spec,conflicting,all,146,0,146,73,0,0.0,0.0,0.0181971443,31,137,122,4,0,0.9452054794520548,37.0,31005.0,24.0
+spec,conflicting,?,146,0,146,73,0,0.0,0.0,0.0181971443,31,137,122,4,0,0.9452054794520548,37.0,31005.0,24.0

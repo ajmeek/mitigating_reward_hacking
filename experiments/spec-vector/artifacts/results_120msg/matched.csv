@@ -1,0 +1,6 @@
+variant,task,group,n_seeds,base_count,spec_count,base_rate,spec_rate
+conflicting,lcbhard_4,A,1,0,0,0.0,0.0
+conflicting,lcbhard_6,B,2,0,0,0.0,0.0
+original,lcbhard_10,C,2,2,2,1.0,1.0
+original,lcbhard_4,A,2,2,2,1.0,1.0
+original,lcbhard_6,B,2,2,2,1.0,1.0
