@@ -1,8 +1,6 @@
-# Mitigating Reward Hacking in Realistic Scenarios through Representation Engineering
+# Mitigating Reward Hacking in Realistic Scenarios Through Representation Engineering
 
-<!-- arXiv badge: fill in the identifier once the preprint is live
-[![arXiv](https://img.shields.io/badge/arXiv-XXXX.XXXXX-b31b1b.svg)](https://arxiv.org/abs/XXXX.XXXXX)
--->
+[![arXiv](https://img.shields.io/badge/arXiv-2610.29129-b31b1b.svg)](https://arxiv.org/abs/2610.29129)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue.svg)](https://ajmeek.github.io/mitigating_reward_hacking_website/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -12,7 +10,7 @@ This is the repository for our work on mitigating reward hacking in realistic sc
 
 ### Links
 
-- **Paper**: arXiv link coming soon
+- **Paper**: [arXiv:2610.29129](https://arxiv.org/abs/2610.29129)
 - **Project Page**: [Website](https://ajmeek.github.io/mitigating_reward_hacking_website/)
 
 ### Abstract
@@ -360,7 +358,17 @@ mitigating_reward_hacking/
 
 If you use this code in your research, please cite:
 
-Note: arXiv bibtex coming soon!
+```bibtex
+@misc{meek2026mitigatingrewardhackingrealistic,
+      title={Mitigating Reward Hacking in Realistic Scenarios Through Representation Engineering},
+      author={Austin Meek and Kyle Cox and Matthew Nguyen and Austin J. Brockmeier and Steven Basart},
+      year={2026},
+      eprint={2610.29129},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2610.29129},
+}
+```
 
 ## License
 
